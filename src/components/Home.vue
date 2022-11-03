@@ -1,0 +1,368 @@
+<template>
+  <!-- Scroll top -->
+  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top" @click="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <!-- Video Container -->
+  <section class="showcase" id="banner">
+    <div class="video-container">
+      <video src="@/assets/video/banner-video.mp4" autoplay muted loop></video>
+    </div>
+    <div class="content">
+      <h1>Photography</h1>
+      <hr style="color: #fff;">
+      <h3>Welcome to my blog, hope you enjoyed with my hobbies</h3>
+      <a href="#about" class="btn">A B O U T M E</a>
+    </div>
+  </section>
+
+  <!-- About Container -->
+  <section id="about" style="padding-top: 165px; padding-bottom: 60px;">
+    <div class="row">
+      <div class="col-5">
+        <img src="@/assets/fall-guy.png" style="width: 542px; height: 574px; object-fit: cover;" class="img-thumbnail"
+          alt="..." />
+      </div>
+      <div class="col-1"></div>
+      <div class="info col-6" style="text-align: left;">
+        <h4>ABOUT ME</h4>
+        <h2>
+          Hi, I'm Nguyen Thanh Quang Huy.
+          <br>
+          A fresher developer based in Ho Chi Minh.
+        </h2>
+
+        <p class="intro">
+          Add description here. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore.
+        </p>
+
+        <div class="about-page" style="margin-top:45px;">
+          <a href="/about" style="color: #fff; background-color: #000; padding: 20px;">More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <section id="showcase">
+    <!-- MAIN (Center website) -->
+    <div class="container main">
+      <h4>LASTEST WORK</h4>
+      <hr>
+      <h1 style="color: #000;">Gallery</h1>
+
+      <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('nature')"> Nature</button>
+        <button class="btn" onclick="filterSelection('cars')"> Cars</button>
+        <button class="btn" onclick="filterSelection('people')"> People</button>
+      </div>
+
+      <!-- Portfolio Gallery Grid -->
+      <!-- Photo Grid -->
+      <div class="row">
+        <div class="column">
+          <img src="https://live.staticflickr.com/65535/52473156172_3f736beb00_h.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52474116395_0c8609b783_h.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473654001_75657d8d1a_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52474198623_1f0c3d9c89_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473936789_4bca28edd7_k.jpg" style="width:100%">
+        </div>
+        <div class="column">
+          <img src="https://live.staticflickr.com/65535/52473654021_c57e9bd140_h.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52474116475_64c17e337a_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473936694_2fea5f22ed_h.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473654681_0d214fefe8_k.jpg" style="width:100%">
+        </div>
+        <div class="column">
+          <img src="https://live.staticflickr.com/65535/52473654471_25df802380_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52474116485_47e90b7279_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473654131_8d283602d4_h.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52474116525_37867cccc7_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473936704_1f7a5637c3_k.jpg" style="width:100%">
+        </div>
+      </div>
+      <!-- END MAIN -->
+    </div>
+  </section>
+
+  <!-- footer -->
+  <section id="footer">
+    <hr>
+    <h2>Follow Me On Social Media</h2>
+      <div class="social" style="padding: 15px;">
+      <a href="https://www.instagram.com/quanghuy_neyugn/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+      <a href="https://facebook.com/quanghuy.nguyenthanh/" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+      <a href="https://github.com/Lugia-Huy" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+      <a href="https://www.linkedin.com/in/huy-nguyen-thanh-quang-73488a165/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+    </div>
+  </section>
+</template>
+ 
+<script>
+export default {
+  name: 'Home',
+  mounted() {
+    this.myFunction();
+    this.scrollFunction();
+
+    // show scroll top
+    //Get the button
+    var mybutton = document.getElementById("btn-back-to-top");
+
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 500) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    });
+  },
+  methods: {
+    myFunction() {
+      let video = document.getElementById("myVideo");
+      let btn = document.getElementById("myBtn");
+
+      if (video.paused) {
+        video.play();
+        btn.innerHTML = "Pause";
+      } else {
+        video.pause();
+        btn.innerHTML = "Play";
+      }
+    },
+
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
+  },
+}
+</script>
+ 
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+:root {
+  --primary-color: #3a4052;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+}
+
+/* Center website */
+.main {
+  max-width: 1700px;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+h1 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-align: center;
+  box-sizing: inherit;
+  fill: #000000;
+  font-family: Gilda Display, serif;
+  font-weight: 400;
+  line-height: 1.2em;
+  letter-spacing: 0em;
+  font-size: 76px;
+  margin: 0.5em 0;
+  word-wrap: break-word;
+  margin-top: 0;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+hr {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: #000;
+  font-size: 14px;
+  line-height: 1.2em;
+  letter-spacing: 0.8em;
+  fill: #000;
+}
+
+.row {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 33%;
+  /* IE10 */
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 931px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  section#about div {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  section#about div.info h4 {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  section#about div.info div.about-page {
+    text-align: center;
+  }
+}
+
+section {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 30px;
+}
+
+section#footer {
+  margin-top: 40px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+.showcase {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-container video {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.video-container:after {
+  content: '';
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.content {
+  z-index: 2;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 30px;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 5px;
+  border: solid #fff 1px;
+  margin-top: 25px;
+  max-width: 135px;
+  opacity: 0.7;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+#about {
+  padding: 40px;
+  text-align: center;
+}
+
+#about p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  text-align: justify;
+}
+
+#about h2 {
+  margin: 30px 0;
+  color: var(--primary-color);
+}
+
+.social a {
+  margin: 0 5px;
+}
+</style>
