@@ -1,7 +1,9 @@
 <template>
   <!-- Scroll top -->
-  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top" @click="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
+  <button type="button" class="btn btn-lg" id="btn-back-to-top" @click="scrollToTop()">
+    <span class="scroll-top-btn">
+      <i class="fa-regular fa-circle-up fa-2x"></i>
+    </span>
   </button>
   <!-- Video Container -->
   <section class="showcase" id="banner">
@@ -20,7 +22,7 @@
   <section id="about" style="padding-top: 165px; padding-bottom: 60px;">
     <div class="row">
       <div class="col-5">
-        <img src="@/assets/fall-guy.png" style="width: 542px; height: 574px; object-fit: cover;" class="img-thumbnail"
+        <img src="@/assets/fall-guy.png" class="img-thumbnail"
           alt="..." />
       </div>
       <div class="col-1"></div>
@@ -52,37 +54,32 @@
       <h4>LASTEST WORK</h4>
       <hr>
       <h1 style="color: #000;">Gallery</h1>
-
-      <div id="myBtnContainer">
-        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-        <button class="btn" onclick="filterSelection('nature')"> Nature</button>
-        <button class="btn" onclick="filterSelection('cars')"> Cars</button>
-        <button class="btn" onclick="filterSelection('people')"> People</button>
-      </div>
-
       <!-- Portfolio Gallery Grid -->
       <!-- Photo Grid -->
       <div class="row">
         <div class="column">
-          <img src="https://live.staticflickr.com/65535/52473156172_3f736beb00_h.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52474116395_0c8609b783_h.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52473654001_75657d8d1a_k.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52474198623_1f0c3d9c89_k.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52473936789_4bca28edd7_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473156172_3f736beb00_h.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52474116395_0c8609b783_h.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473654001_75657d8d1a_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52474198623_1f0c3d9c89_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473936789_4bca28edd7_k.jpg" style="width:100%" loading="lazy">
         </div>
         <div class="column">
-          <img src="https://live.staticflickr.com/65535/52473654021_c57e9bd140_h.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52474116475_64c17e337a_k.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52473936694_2fea5f22ed_h.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52473654681_0d214fefe8_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473654021_c57e9bd140_h.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52474116475_64c17e337a_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473936694_2fea5f22ed_h.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473654681_0d214fefe8_k.jpg" style="width:100%" loading="lazy">
         </div>
         <div class="column">
-          <img src="https://live.staticflickr.com/65535/52473654471_25df802380_k.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52474116485_47e90b7279_k.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52473654131_8d283602d4_h.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52474116525_37867cccc7_k.jpg" style="width:100%">
-          <img src="https://live.staticflickr.com/65535/52473936704_1f7a5637c3_k.jpg" style="width:100%">
+          <img src="https://live.staticflickr.com/65535/52473654471_25df802380_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52474116485_47e90b7279_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473654131_8d283602d4_h.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52474116525_37867cccc7_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473936704_1f7a5637c3_k.jpg" style="width:100%" loading="lazy">
         </div>
+      </div>
+      <div class="more-btn">
+        <a href="/gallery">More</a>
       </div>
       <!-- END MAIN -->
     </div>
@@ -106,17 +103,15 @@ export default {
   name: 'Home',
   mounted() {
     this.myFunction();
-    this.scrollFunction();
 
     // show scroll top
-    //Get the button
     var mybutton = document.getElementById("btn-back-to-top");
 
     window.addEventListener('scroll', function () {
       if (window.pageYOffset > 500) {
-        mybutton.style.display = "block";
+        mybutton.fadeIn();
       } else {
-        mybutton.style.display = "none";
+        mybutton.fadeOut();
       }
     });
   },
@@ -208,6 +203,13 @@ h4 {
   letter-spacing: 0.8em;
   fill: #000;
 }
+.img-thumbnail{
+  width: 542px; 
+  height: 574px; 
+  object-fit: cover;
+  border-bottom-left-radius: 80px;
+  border-top-right-radius: 80px;
+}
 
 .row {
   display: -ms-flexbox;
@@ -251,6 +253,14 @@ h4 {
     max-width: 100%;
   }
 
+  h1 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 17px;
+  }
+
   section#about div {
     -ms-flex: 100%;
     flex: 100%;
@@ -279,11 +289,11 @@ section#footer {
   padding: 0px;
 }
 
-#btn-back-to-top {
+button#btn-back-to-top {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  display: none;
+  color: red;
 }
 
 .showcase {
@@ -294,6 +304,27 @@ section#footer {
   text-align: center;
   color: #fff;
   padding: 0 20px;
+}
+
+section#showcase div.main div.more-btn a{
+  background-color: #000;
+  color: #fff;
+  max-width: 150px;
+  max-height: 50px;
+  padding: 10px 30px;
+  display: block;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+section#showcase .main .more-btn{
+  position: relative;
+  margin-top: 40px;
 }
 
 .video-container {

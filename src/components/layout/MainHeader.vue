@@ -8,11 +8,6 @@
                 data-bs-target="#collapseNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!--
-            <button class="navbar-toggler" type="button">
-                <span style="font-size:30px;cursor:pointer" v-on:click="show()">&#9776;</span>
-            </button>
-            -->
             <div class="navbar-collapse collapse" id="collapseNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -54,37 +49,6 @@
                     </li>
                 </ul>
             </div>
-
-            <!-- mobile menu
-            <div v-if="isHidden" id="myNav" class="overlay">
-                <a href="#" class="closebtn" v-on:click="hidden()">&times;</a>
-                <div class="overlay-content">
-                    <a href="#">Home</a>
-                    <a href="#">Gallery</a>
-                    <a href="#">About</a>
-                    <br>
-                    <div class="social-mb">
-                        <div class="social-icon">
-                            <a class="nav-link" href="https://www.instagram.com/quanghuy_neyugn/" target="_blank">
-                                <span>
-                                    <i class="fa-brands fa-instagram"></i>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="social-icon">
-                            <a class="nav-link" href="https://www.facebook.com/quanghuy.nguyenthanh/" target="_blank">
-                                <span>
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="btn-contact">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </div>
-                </div>
-            </div>
-             -->
         </div>
     </nav>
 </template>
@@ -92,11 +56,6 @@
 <script>
 export default {
     name: 'MainHeader',
-    data() {
-        return {
-            isHidden: false,
-        }
-    },
     mounted() {
         var nav = document.querySelector('nav');
 
@@ -304,11 +263,11 @@ li:hover {
 
 /**/
 @media screen and (min-width: 991px) {
-    .navbar-brand.abs {
+    .navbar .container-fluid .navbar-brand.abs {
         position: absolute;
         width: auto;
         left: 50%;
-        font-size: 37px;
+        font-size: 27px;
         transform: translateX(-50%);
         text-align: center;
         font-family: Gilda Display, serif;
@@ -323,8 +282,8 @@ li:hover {
 
 
 @media screen and (max-width: 991px) {
-    .navbar-brand.abs {
-        font-size: 37px;
+    .navbar .container-fluid .navbar-brand.abs {
+        font-size: 27px;
         font-family: Gilda Display, serif;
         letter-spacing: 3px;
         font-weight: lighter;

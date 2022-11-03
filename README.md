@@ -1,4 +1,5 @@
 # blog-images
+Link live: [Huy's Blog](https://huysociuchuacony.netlify.app/)
 
 ## Project setup
 ```
