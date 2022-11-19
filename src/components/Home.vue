@@ -1,6 +1,6 @@
 <template>
   <!-- Scroll top -->
-  <button type="button" class="btn btn-lg" id="btn-back-to-top" @click="scrollToTop()">
+  <button class="btn btn-lg" id="btn-back-to-top" style="border: none;" @click="scrollToTop()">
     <span class="scroll-top-btn">
       <i class="fa-regular fa-circle-up fa-2x"></i>
     </span>
@@ -35,53 +35,43 @@
         </h2>
 
         <p class="intro">
-          Add description here. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore.
+          I love photography, I like to put things around me in my photos and this is where I share my photos with everyone.
         </p>
 
         <div class="about-page" style="margin-top:45px;">
-          <a href="/about" style="color: #fff; background-color: #000; padding: 20px;">More</a>
+          <a href="/gallery" style="color: #fff; background-color: #000; padding: 20px;">More</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Content Area -->
+  <!-- Portfolio Gallery Grid -->
   <section id="showcase">
-    <!-- MAIN (Center website) -->
     <div class="container main">
       <h4>LASTEST WORK</h4>
       <hr>
-      <h1 style="color: #000;">Gallery</h1>
-      <!-- Portfolio Gallery Grid -->
+      <h1 style="color: #000;">SHOWCASE</h1>
       <!-- Photo Grid -->
       <div class="row">
         <div class="column">
           <img src="https://live.staticflickr.com/65535/52473156172_3f736beb00_h.jpg" style="width:100%" loading="lazy">
           <img src="https://live.staticflickr.com/65535/52474116395_0c8609b783_h.jpg" style="width:100%" loading="lazy">
           <img src="https://live.staticflickr.com/65535/52473654001_75657d8d1a_k.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52474198623_1f0c3d9c89_k.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52473936789_4bca28edd7_k.jpg" style="width:100%" loading="lazy">
         </div>
         <div class="column">
           <img src="https://live.staticflickr.com/65535/52473654021_c57e9bd140_h.jpg" style="width:100%" loading="lazy">
           <img src="https://live.staticflickr.com/65535/52474116475_64c17e337a_k.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52473936694_2fea5f22ed_h.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52473654681_0d214fefe8_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473936704_1f7a5637c3_k.jpg" style="width:100%" loading="lazy">
         </div>
         <div class="column">
           <img src="https://live.staticflickr.com/65535/52473654471_25df802380_k.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52474116485_47e90b7279_k.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52473654131_8d283602d4_h.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52474116525_37867cccc7_k.jpg" style="width:100%" loading="lazy">
-          <img src="https://live.staticflickr.com/65535/52473936704_1f7a5637c3_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473654681_0d214fefe8_k.jpg" style="width:100%" loading="lazy">
+          <img src="https://live.staticflickr.com/65535/52473936694_2fea5f22ed_h.jpg" style="width:100%" loading="lazy">
         </div>
       </div>
       <div class="more-btn">
         <a href="/gallery">More</a>
       </div>
-      <!-- END MAIN -->
     </div>
   </section>
 
@@ -102,33 +92,8 @@
 export default {
   name: 'Home',
   mounted() {
-    this.myFunction();
-
-    // show scroll top
-    var mybutton = document.getElementById("btn-back-to-top");
-
-    window.addEventListener('scroll', function () {
-      if (window.pageYOffset > 500) {
-        mybutton.fadeIn();
-      } else {
-        mybutton.fadeOut();
-      }
-    });
   },
   methods: {
-    myFunction() {
-      let video = document.getElementById("myVideo");
-      let btn = document.getElementById("myBtn");
-
-      if (video.paused) {
-        video.play();
-        btn.innerHTML = "Pause";
-      } else {
-        video.pause();
-        btn.innerHTML = "Play";
-      }
-    },
-
     scrollToTop() {
       window.scrollTo(0, 0);
     },
@@ -158,7 +123,6 @@ body {
   line-height: 1.5;
 }
 
-/* Center website */
 .main {
   max-width: 1700px;
   margin: auto;
@@ -221,7 +185,6 @@ h4 {
   padding: 0 4px;
 }
 
-/* Create four equal columns that sits next to each other */
 .column {
   -ms-flex: 33%;
   /* IE10 */
@@ -236,7 +199,6 @@ h4 {
   width: 100%;
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 931px) {
   .column {
     -ms-flex: 50%;
@@ -245,7 +207,6 @@ h4 {
   }
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
     -ms-flex: 100%;

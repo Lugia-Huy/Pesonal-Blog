@@ -1,11 +1,11 @@
 <template>
     <!-- Navbar  -->
-    <nav id="navbar" class="navbar fixed-top navbar-expand-md navbar-dark p-md-2">
+    <nav id="navbar" class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand abs" href="/">Quang Huy</a>
 
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseNavbar">
+                data-bs-target="#collapseNavbar" @click="changeBackground">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse" id="collapseNavbar">
@@ -14,10 +14,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/allery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about" data-bs-toggle="collapse">About</a>
+                        <a class="nav-link" href="/gallery">Gallery</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -57,16 +54,20 @@
 export default {
     name: 'MainHeader',
     mounted() {
-        var nav = document.querySelector('nav');
+    },
 
-        window.addEventListener('scroll', function () {
-            if (window.pageYOffset > 100) {
+    created() {
+        console.log(this.$route.path)
+    },
+    methods: {
+        changeBackground(event) {
+            var nav = document.querySelector('nav');
+            if (event) {
                 nav.classList.add('bg-dark', 'shadow');
             } else {
                 nav.classList.remove('bg-dark', 'shadow');
             }
-        });
-
+        },
     },
 }
 </script>
@@ -218,35 +219,6 @@ li:hover {
     background-color: rgba(255, 255, 255, 0.9);
     overflow-x: hidden;
     transition: 0.5s;
-}
-
-.overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #000000;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover,
-.overlay a:focus {
-    color: #9e9e9e;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
 }
 
 @media screen and (max-height: 450px) {
