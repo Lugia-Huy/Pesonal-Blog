@@ -1,10 +1,10 @@
 <template>
   <!-- Scroll top -->
-  <button class="btn btn-lg" id="btn-back-to-top" style="border: none;" @click="scrollToTop()">
+  <div class="btn btn-lg" id="btn-back-to-top" style="border: none;" @click="scrollToTop()">
     <span class="scroll-top-btn">
       <i class="fa-regular fa-circle-up fa-2x"></i>
     </span>
-  </button>
+  </div>
   <!-- Video Container -->
   <section class="showcase" id="banner">
     <div class="video-container">
@@ -19,7 +19,7 @@
   </section>
 
   <!-- About Container -->
-  <section id="about" style="padding-top: 165px; padding-bottom: 60px;">
+  <section id="about" style="padding-top: 60px; padding-bottom: 60px;">
     <div class="row">
       <div class="col-5">
         <img src="@/assets/fall-guy.png" class="img-thumbnail"
@@ -48,7 +48,7 @@
   <!-- Portfolio Gallery Grid -->
   <section id="showcase">
     <div class="container main">
-      <h4>LASTEST WORK</h4>
+      <h4>H I G H L I G H T S</h4>
       <hr>
       <h1 style="color: #000;">SHOWCASE</h1>
       <!-- Photo Grid -->
@@ -250,7 +250,7 @@ section#footer {
   padding: 0px;
 }
 
-button#btn-back-to-top {
+div#btn-back-to-top {
   position: fixed;
   bottom: 20px;
   right: 20px;

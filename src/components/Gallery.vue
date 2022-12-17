@@ -1,10 +1,10 @@
 <template>
    <!-- Scroll top -->
-   <button type="button" class="btn btn-lg" id="btn-back-to-top" @click="scrollToTop()">
+   <div type="button" class="btn btn-lg" id="btn-back-to-top" @click="scrollToTop()">
       <span class="scroll-top-btn">
          <i class="fa-regular fa-circle-up fa-2x"></i>
       </span>
-   </button>
+   </div>
 
    <section id="showcase">
       <div class="container main">
@@ -14,11 +14,23 @@
          <!-- Portfolio Gallery Grid -->
          <!-- Photo Grid -->
          <div class="row">
-            <!-- render list image get from flickr api
-            <div class="column" v-for="photo in images_col2" :key="photo.id">
-               <img :src="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret +'.jpg'" style="width:100%" loading="lazy">
+            <!-- render list image get from flickr api -->
+            <div class="column" v-for="photo in images_col1" :key="photo.id">
+               <img
+                  :src="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg'"
+                  style="width:100%" loading="lazy">
             </div>
-            -->
+            <div class="column" v-for="photo in images_col2" :key="photo.id">
+               <img
+                  :src="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg'"
+                  style="width:100%" loading="lazy">
+            </div>
+            <div class="column" v-for="photo in images_col3" :key="photo.id">
+               <img
+                  :src="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg'"
+                  style="width:100%" loading="lazy">
+            </div>
+            <!-- Data demo
             <div class="column">
                <img src="https://live.staticflickr.com/65535/52473156172_3f736beb00_h.jpg" style="width:100%"
                   loading="lazy">
@@ -53,13 +65,14 @@
                <img src="https://live.staticflickr.com/65535/52473936704_1f7a5637c3_k.jpg" style="width:100%"
                   loading="lazy">
             </div>
+            -->
          </div>
       </div>
    </section>
 </template>
   
 <script>
-import axios from 'axios';
+const uri = 'https://www.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=10ec604a41ae53b58ecf33911f4e77cd&user_id=196851691%40N04&format=json&nojsoncallback=1';
 
 export default {
    name: 'Gallery',
@@ -84,16 +97,14 @@ export default {
          window.scrollTo(0, 0);
       },
 
-      getAllImage() {
-         let uri = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=6e8dff27a17aeef7351681a353814e72&user_id=196851691%40N04&format=json&nojsoncallback=1';
-
-         axios.get(uri).then((response) => {
-            this.images = response.photos.photo;
-            this.total = response.photos.total;
-            this.images_col1 = this.images.slice(0, this.total / 3);
-            this.images_col2 = this.images.slice(this.total / 3 + 1, this.total / 3 * 2);
-            this.images_col3 = this.images.slice(this.total / 3 * 2 + 1, this.total);
-         });
+      async getAllImage() {
+         const res = await fetch(`${uri}`);
+         const result = await res.json();
+         this.images = result.photos.photo;
+         this.total = result.photos.total;
+         this.images_col1 = this.images.slice(0, this.total / 3);
+         this.images_col2 = this.images.slice(this.total / 3 + 1, this.total / 3 * 2);
+         this.images_col3 = this.images.slice(this.total / 3 * 2 + 1, this.total);
       },
    },
 }
@@ -167,28 +178,28 @@ h4 {
 }
 
 .row {
-   display: -ms-flexbox;
-   /* IE10 */
-   display: flex;
-   -ms-flex-wrap: wrap;
-   /* IE10 */
-   flex-wrap: wrap;
-   padding: 0 4px;
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
 }
 
 .column {
-   -ms-flex: 33%;
-   /* IE10 */
-   flex: 33%;
-   max-width: 33%;
-   padding: 0 4px;
+  -ms-flex: 33%;
+  /* IE10 */
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 4px;
 }
 
 .column img {
-   margin-top: 8px;
-   vertical-align: middle;
-   width: 100%;
+  margin-top: 8px;
+  vertical-align: middle;
 }
+
 
 @media screen and (max-width: 931px) {
    .column {
@@ -234,11 +245,12 @@ section#footer {
    padding: 0px;
 }
 
-button#btn-back-to-top {
+div#btn-back-to-top {
    position: fixed;
    bottom: 20px;
    right: 20px;
    color: red;
+   border-width: 0;
 }
 
 #showcase {

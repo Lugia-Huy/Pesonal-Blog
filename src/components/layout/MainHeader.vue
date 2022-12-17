@@ -80,6 +80,7 @@ export default {
     margin-left: 30px;
     margin-right: 30px;
     padding: 15px;
+    max-height: 75px;
 }
 
 #collapseNavbar ul li {
